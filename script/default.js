@@ -29,22 +29,15 @@ const usePageStore = Pinia.defineStore('pageStore', {
 				startColumn: 1,
 				id: "1NUkbREpnVzU3EZHXcrA-QPqU9WjF76FsU-IVFiNStbY",
 				name: "table-0"
-			};
-			axios.post(url, JSON.stringify(data))
+			}.toString();
+			axios.post(url, data, {
+				headers: { "Content-Type": "application/x-www-form-urlencoded" }
+			})
 				.then((res) => {
-					console.log('res1:', res);
-					// this.tableData = res;
+					console.log("res:", res.data);
 				})
 				.catch((error) => {
-					console.log('error1:', error);
-				});
-			axios.post(url, data)
-				.then((res) => {
-					console.log('res2:', res);
-					// this.tableData = res;
-				})
-				.catch((error) => {
-					console.log('error2:', error);
+					console.log("error:", error);
 				});
 
 		},
