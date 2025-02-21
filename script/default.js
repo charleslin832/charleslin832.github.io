@@ -30,14 +30,25 @@ const usePageStore = Pinia.defineStore('pageStore', {
 				id: "1NUkbREpnVzU3EZHXcrA-QPqU9WjF76FsU-IVFiNStbY",
 				name: "table-0"
 			};
-			axios.get(url, { data })
-				.then((res) => {
-					console.log(res);
-					// this.tableData = res;
-				})
-				.catch((error) => {
-					console.log(error);
-				});
+			// axios.get(url, { data })
+			// 	.then((res) => {
+			// 		console.log(res);
+			// 		// this.tableData = res;
+			// 	})
+			// 	.catch((error) => {
+			// 		console.log(error);
+			// 	});
+
+			// 轉換成查詢字串
+			const queryString = new URLSearchParams(data).toString();
+			const fullUrl = `${url}?${queryString}`;
+			fetch(fullUrl, {
+				method: "GET"
+			})
+				.then(response => response.json())
+				.then(res => console.log("成功:", res))
+				.catch(error => console.error("錯誤:", error));
+
 		},
 		changeControlData(payload){
 			this.controlData.linkType = Number(payload.linkType);
@@ -166,8 +177,6 @@ app.component('table-area', {
 				});
 			}
 			// 線上狀態
-			console.log(controlData.value.linkType);
-
 			if (controlData.value.linkType == 1){
 				tableDataFilterArray = arrayData.filter(function (item) {
 					return item[3] == 1;
