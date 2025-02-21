@@ -23,31 +23,29 @@ const usePageStore = Pinia.defineStore('pageStore', {
 	actions: {
 		initData(payload){
 			console.log('init');
-			let url = "https://script.google.com/macros/s/AKfycbyl5OOFRc5e2CpxuWZIdfYTF86nPeQpQJF8OmMBzhnEO7ZpIsRAh7IiKJYIbY26PQpJMQ/exec";
+			let url = "https://script.google.com/macros/s/AKfycbwl-pYjCy9GmxD4DbfzLqx3v4k80MvmXUBqoqfvOqrpuZINF-WKdS0zfxy_ElT2zouSQA/exec";
 			let data = {
 				startRow: 2,
 				startColumn: 1,
 				id: "1NUkbREpnVzU3EZHXcrA-QPqU9WjF76FsU-IVFiNStbY",
 				name: "table-0"
 			};
-			// axios.get(url, { data })
-			// 	.then((res) => {
-			// 		console.log(res);
-			// 		// this.tableData = res;
-			// 	})
-			// 	.catch((error) => {
-			// 		console.log(error);
-			// 	});
-
-			// 轉換成查詢字串
-			const queryString = new URLSearchParams(data).toString();
-			const fullUrl = `${url}?${queryString}`;
-			fetch(fullUrl, {
-				method: "GET"
-			})
-				.then(response => response.json())
-				.then(res => console.log("成功:", res))
-				.catch(error => console.error("錯誤:", error));
+			axios.post(url, JSON.stringify(data))
+				.then((res) => {
+					console.log('res1:', res);
+					// this.tableData = res;
+				})
+				.catch((error) => {
+					console.log('error1:', error);
+				});
+			axios.post(url, data)
+				.then((res) => {
+					console.log('res2:', res);
+					// this.tableData = res;
+				})
+				.catch((error) => {
+					console.log('error2:', error);
+				});
 
 		},
 		changeControlData(payload){
