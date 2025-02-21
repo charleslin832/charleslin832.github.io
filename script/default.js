@@ -23,16 +23,14 @@ const usePageStore = Pinia.defineStore('pageStore', {
 	actions: {
 		initData(payload){
 			console.log('init');
-			let url = "https://script.google.com/macros/s/AKfycbyyGoKDXoSaiv2gmT5mWF5_dXx7iLj1HYvcPOmgCQey28fX6AfvzR8KGlfzDx-yJQ9ZsA/exec";
+			let url = "https://script.google.com/macros/s/AKfycbyyc4-AdcUevALIf5q3R_UgKfYYge4yGZ8Ll0gUvRtV4zvkqYwfIg25CQJ0EnmT6s7L-g/exec";
 			let data = {
 				startRow: 2,
 				startColumn: 1,
 				id: "1NUkbREpnVzU3EZHXcrA-QPqU9WjF76FsU-IVFiNStbY",
 				name: "table-0"
 			}.toString();
-			axios.post(url, data, {
-				headers: { "Content-Type": "application/x-www-form-urlencoded" }
-			})
+			axios.post(url, data)
 				.then((res) => {
 					console.log("res:", res);
 				})
