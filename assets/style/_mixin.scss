@@ -1,0 +1,209 @@
+﻿/* mixin */
+// 次方
+@function pow($number, $exp) {
+	$value: 1;
+	@if $exp > 0 {
+		@for $i from 1 through $exp {
+			$value: $value * $number;
+		}
+	}
+	@else if $exp < 0 {
+		@for $i from 1 through -$exp {
+			$value: $value / $number;
+		}
+	}
+	@return $value;
+}
+// 階層
+@function fact($number) {
+	$value: 1;
+	@if $number > 0 {
+		@for $i from 1 through $number {
+			$value: $value * $i;
+		}
+	}
+	@return $value;
+}
+// 圓
+@function pi() {
+	@return 3.14159265359;
+}
+@function rad($angle) {
+	$unit: unit($angle);
+	$unitless: $angle / ($angle * 0 + 1);
+	// If the angle has 'deg' as unit, convert to radians.
+	@if $unit == deg {
+		$unitless: $unitless / 180 * pi();
+	}
+	@return $unitless;
+}
+// 三角函數
+@function sin($angle) {
+	$sin: 0;
+	$angle: rad($angle);
+	// Iterate a bunch of times.
+	@for $i from 0 through 10 {
+		$sin: $sin + pow(-1, $i) * pow($angle, (2 * $i + 1)) / fact(2 * $i + 1);
+	}
+	@return $sin;
+}
+@function cos($angle) {
+	$cos: 0;
+	$angle: rad($angle);
+	// Iterate a bunch of times.
+	@for $i from 0 through 10 {
+		$cos: $cos + pow(-1, $i) * pow($angle, 2 * $i) / fact(2 * $i);
+	}
+	@return $cos;
+}
+@function tan($angle) {
+	@return sin($angle) / cos($angle);
+}
+
+// 768vw
+@function vw($size,$breakpoint:768px) {
+	@return calc($size / $breakpoint) * 100vw;
+}
+@mixin media($breakpoint:768px) {
+	@media screen and (max-width:$breakpoint){
+		@content;
+	}
+}
+@mixin hover($breakpoint: 768px) {
+	@media screen and (min-width: calc($breakpoint + 1px)) {
+		&:hover {
+			@content;
+		}
+	}
+}
+// 文字外框
+@function stroke($stroke, $color) {
+	$shadow: ();
+	$from: $stroke*-1;
+	@for $i from $from through $stroke {
+		@for $j from $from through $stroke {
+			$shadow: append($shadow, $i*1 $j*1 0 $color, comma);
+		}
+	}
+	@return $shadow;
+}
+@mixin stroke($stroke, $color) {
+	text-shadow: stroke($stroke, $color);
+}
+// 文字省略
+@mixin ellipsis() {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+// 偽元素垂直置中
+@mixin dib-vam($ele: after) {
+	font-size: 0;
+	&>*{
+		display: inline-block;
+		vertical-align: middle;
+	}
+	@if ($ele == before) {
+		&:after{
+			content: '';
+			display: inline-block;
+			width: 0;
+			height: 100%;
+			vertical-align: middle;
+		}
+	}
+	@else if ($ele == after) {
+		&:before{
+			content: '';
+			display: inline-block;
+			width: 0;
+			height: 100%;
+			vertical-align: middle;
+		}
+	}
+}
+// triangle
+@mixin triangle( $align, $width, $height, $color) {
+	height: 0;
+	width: 0;
+	@if ($align == T) {
+		border-bottom: $width solid $color;
+		border-left: ($width/2) solid transparent;
+		border-right: ($width/2) solid transparent;
+	}
+	@else if ($align == R) {
+		border-left: $width solid $color;
+		border-top: ($height/2) solid transparent;
+		border-bottom: ($height/2) solid transparent;
+	}
+	@else if ($align == B) {
+		border-top: $height solid $color;
+		border-left: ($width/2) solid transparent;
+		border-right: ($width/2) solid transparent;
+	}
+	@else if ($align == L) {
+		border-right: $width solid $color;
+		border-top: ($height/2) solid transparent;
+		border-bottom: ($height/2) solid transparent;
+	}
+	@else if ($align == RT) {
+		border-right: $width solid $color;
+		border-bottom: $height solid transparent;
+	}
+	@else if ($align == LT) {
+		border-left: $width solid $color;
+		border-bottom: $height solid transparent;
+	}
+	@else if ($align == RB) {
+		border-right: $width solid $color;
+		border-top: $height solid transparent;
+	}
+	@else if ($align == LB) {
+		border-left: $width solid $color;
+		border-top: $height solid transparent;
+	}
+}
+// cross
+@mixin cross( $crossWidth: 42px, $crossHeight: 1px, $color: #000, $radius: 0) {
+	&:before, &:after{
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		display: block;
+		width: $crossWidth;
+		height: $crossHeight;
+		background-color: $color;
+		transform-origin: 50% 50%;
+		border-radius: $radius;
+	}
+	&:before{
+		transform: translate(-50%, -50%) rotate(45deg);
+	}
+	&:after{
+		transform: translate(-50%, -50%) rotate(-45deg);
+	}
+}
+@mixin crossBox($boxWidth: 30px,$innerWidth: 30px, $borderWidth: 1px, $color: #000, $radius: 0) {
+	width: $boxWidth;
+	height: $boxWidth;
+	&:before,
+	&:after {
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		display: block;
+		width: floor($innerWidth / cos(45deg));
+		height: $borderWidth;
+		background-color: $color;
+		transform-origin: 50% 50%;
+		border-radius: $radius;
+	}
+	&:before {
+		transform: translate(-50%, -50%) rotate(45deg);
+	}
+	&:after {
+		transform: translate(-50%, -50%) rotate(-45deg);
+	}
+}

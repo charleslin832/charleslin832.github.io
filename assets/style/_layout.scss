@@ -1,0 +1,42 @@
+﻿/* layout */
+.gbox{
+	// overflow-y: auto;
+	// overflow-x: hidden;
+	.gbox-wrap{
+		// margin: 20px 0;
+		// max-width: 600px;
+		// width: 70%;
+		// padding: 20px;
+		// background: #fff;
+	}
+	.gbox-title{
+		// font-weight: bold;
+		// margin: 0 -20px;
+		// padding: 15px;
+		// font-size: 32px;
+	}
+	.gbox-content{
+		// font-size: 22px;
+		// padding: 20px 0;
+	}
+	.gbox-action{
+		.gbox-btn{
+			// margin: 5px;
+			// padding: 10px 30px;
+			// background: #5ac832;
+			// border-radius: 5px;
+			// font-size: 20px;
+			// color: #fff;
+		}
+	}
+	// 關閉
+	.gbox-close{
+		// width: 45px;
+		// height: 45px;
+		// line-height: 45px;
+		// right: 0;
+		// top: 0;
+		// color: #333;
+		// font-size: 26px;
+	}
+}

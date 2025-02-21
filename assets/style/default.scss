@@ -1,0 +1,123 @@
+﻿@charset 'utf-8';
+// import
+@import '_mixin.scss';      // 功能引入
+@import '_normalize.scss';  // Normalize
+@import '_reset_plus.scss'; // 增加RESET
+@import '_layout.scss';     // 共用
+/* 變數 */
+$uid: unique_id();
+$bgc: #eee;
+
+/* 主要 */
+html,body{
+	background-color: $bgc;
+}
+.wrapper{
+	font-size: 16px;
+	margin: 0 auto;
+	h1{
+		text-align: center;
+		background-color: #ccc;
+		margin: 0;
+		padding: 0.5em;
+	}
+	.control-area{
+		width: 90%;
+		padding: 24px 0;
+		margin: 0 auto 24px;
+		border-bottom: 2px solid #333;
+		.input-row{
+			display: flex;
+			align-items: center;
+			width: 100%;
+			margin-bottom: 6px;
+			&>span{
+				display: inline-flex;
+			}
+			.select-outer{
+				display: inline-flex;
+				width: 50%;
+				position: relative;
+				&:after{
+					content: '';
+					position: absolute;
+					display: block;
+					top: 25%;
+					right: .75em;
+					pointer-events: none;
+					@include triangle(B, 1em, .8em, #333);
+				}
+			}
+			select{
+				appearance: none;
+				border: 1px solid #333;
+				width: 100%;
+				padding: .25em .5em;
+				border-radius: 3px;
+			}
+			.input-checkbox-outer{
+				position: relative;
+				display: inline-flex;
+				cursor: pointer;
+				input[type=checkbox]{
+					appearance: none;
+					border: 1px solid #333;
+					height: 1.5em;
+					width: 1.5em;
+					cursor: pointer;
+					border-radius: 3px;
+				}
+				input:checked+span{
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -75%) rotate(45deg);
+					display: block;
+					width: .75em;
+					height: 1em;
+					border-right: 3px solid #333;
+					border-bottom: 3px solid #333;
+					pointer-events: none;
+				}
+			}
+		}
+	}
+	.table-area{
+		width: 90%;
+		margin: 0 auto;
+		.table{
+			width: 100%;
+			margin: 0 auto;
+			border-collapse: collapse;
+			border: 2px solid #333;
+			thead{
+				background-color: #999;
+				tr{
+					border: 2px solid #333;
+				}
+				th{
+					padding: .25em .5em;
+				}
+			}
+			tbody{
+				tr{
+					&.disabled{
+						background-color: #ccc;
+					}
+				}
+				td{
+					font-weight: bold;
+					padding: .25em .5em;
+					border-bottom: 1px solid #999;
+					span{
+						font-weight: normal;
+					}
+					a {
+						color: #000;
+						font-weight: bold;
+					}
+				}
+			}
+		}
+	}
+}

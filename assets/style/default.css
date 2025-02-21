@@ -1,0 +1,435 @@
+@charset "UTF-8";
+/* mixin */
+/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+html {
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+main {
+  display: block;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+
+pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+a {
+  background-color: transparent;
+}
+
+abbr[title] {
+  border-bottom: none;
+  text-decoration: underline;
+  text-decoration: underline dotted;
+}
+
+b, strong {
+  font-weight: bolder;
+}
+
+code, kbd, samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+small {
+  font-size: 80%;
+}
+
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+img {
+  border-style: none;
+}
+
+button, input, optgroup, select, textarea {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+}
+
+button, input {
+  overflow: visible;
+}
+
+button, select {
+  text-transform: none;
+}
+
+[type=button], [type=reset], [type=submit], button {
+  -webkit-appearance: button;
+}
+
+[type=button]::-moz-focus-inner, [type=reset]::-moz-focus-inner, [type=submit]::-moz-focus-inner, button::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+[type=button]:-moz-focusring, [type=reset]:-moz-focusring, [type=submit]:-moz-focusring, button:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+fieldset {
+  padding: 0.35em 0.75em 0.625em;
+}
+
+legend {
+  box-sizing: border-box;
+  color: inherit;
+  display: table;
+  max-width: 100%;
+  padding: 0;
+  white-space: normal;
+}
+
+progress {
+  vertical-align: baseline;
+}
+
+textarea {
+  overflow: auto;
+}
+
+[type=checkbox], [type=radio] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+[type=number]::-webkit-inner-spin-button, [type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+[type=search] {
+  -webkit-appearance: textfield;
+  outline-offset: -2px;
+}
+
+[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  font: inherit;
+}
+
+details {
+  display: block;
+}
+
+summary {
+  display: list-item;
+}
+
+template {
+  display: none;
+}
+
+[hidden] {
+  display: none;
+}
+
+/* RESET plus */
+html, body {
+  font-family: "PingFangTC-Regular", "Heiti TC", "Noto Sans TC", "Microsoft JhengHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+input, select, option {
+  font-family: "PingFangTC-Regular", "Heiti TC", "Noto Sans TC", "Microsoft JhengHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* C */
+.wrapper {
+  position: relative;
+  box-sizing: border-box;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+.wrapper * {
+  background-position: center top;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  word-break: break-all;
+}
+.wrapper *:after {
+  box-sizing: border-box;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+.wrapper *:before {
+  box-sizing: border-box;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+.wrapper:after {
+  box-sizing: border-box;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+.wrapper:before {
+  box-sizing: border-box;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+.wrapper ul, .wrapper li {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.wrapper li {
+  margin-left: 1.25em;
+}
+.wrapper p {
+  margin: 1.25em 0;
+}
+.wrapper a {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.wrapper select::-ms-expand {
+  display: none;
+}
+.wrapper.mobile *[data-type=dt] {
+  display: none !important;
+}
+.wrapper.desktop *[data-type=mb] {
+  display: none !important;
+}
+.wrapper.typeBG * {
+  background-size: 100% auto;
+}
+.wrapper.typeBG *:after {
+  background-size: 100% auto;
+}
+.wrapper.typeBG *:before {
+  background-size: 100% auto;
+}
+.wrapper.typeBG:after {
+  background-size: 100% auto;
+}
+.wrapper.typeBG:before {
+  background-size: 100% auto;
+}
+
+@media screen and (max-width: 768px) {
+  .wrapper.desktop *[data-type=mb] {
+    display: initial !important;
+  }
+  .wrapper.desktop *[data-type=dt] {
+    display: none !important;
+  }
+}
+.btn {
+  cursor: pointer;
+}
+
+/* gbox */
+.gbox {
+  box-sizing: border-box;
+  font-size: 0;
+}
+.gbox * {
+  box-sizing: border-box;
+  word-break: break-all;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+.gbox *:after {
+  box-sizing: border-box;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+.gbox *:before {
+  box-sizing: border-box;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+.gbox ul, .gbox li {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.gbox li {
+  margin-left: 1.25em;
+}
+.gbox p {
+  margin: 1.25em 0;
+}
+.gbox a {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.gbox select::-ms-expand {
+  display: none;
+}
+
+/* desktop */
+.wrapper.desktop .btn:hover {
+  background-position: center bottom;
+}
+
+body.desktop .gbox-btn:hover,
+body.desktop .gbox-close:hover {
+  background-position: center bottom;
+}
+
+/* gama */
+.UNI-footer {
+  position: relative;
+}
+
+@media screen and (max-width: 1000px) {
+  #topBar {
+    display: none;
+  }
+}
+/* other */
+body.ovh {
+  overflow: hidden;
+}
+
+/* layout */
+/* 變數 */
+/* 主要 */
+html, body {
+  background-color: #eee;
+}
+
+.wrapper {
+  font-size: 16px;
+  margin: 0 auto;
+}
+.wrapper h1 {
+  text-align: center;
+  background-color: #ccc;
+  margin: 0;
+  padding: 0.5em;
+}
+.wrapper .control-area {
+  width: 90%;
+  padding: 24px 0;
+  margin: 0 auto 24px;
+  border-bottom: 2px solid #333;
+}
+.wrapper .control-area .input-row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 6px;
+}
+.wrapper .control-area .input-row > span {
+  display: inline-flex;
+}
+.wrapper .control-area .input-row .select-outer {
+  display: inline-flex;
+  width: 50%;
+  position: relative;
+}
+.wrapper .control-area .input-row .select-outer:after {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 25%;
+  right: 0.75em;
+  pointer-events: none;
+  height: 0;
+  width: 0;
+  border-top: 0.8em solid #333;
+  border-left: 0.5em solid transparent;
+  border-right: 0.5em solid transparent;
+}
+.wrapper .control-area .input-row select {
+  appearance: none;
+  border: 1px solid #333;
+  width: 100%;
+  padding: 0.25em 0.5em;
+  border-radius: 3px;
+}
+.wrapper .control-area .input-row .input-checkbox-outer {
+  position: relative;
+  display: inline-flex;
+  cursor: pointer;
+}
+.wrapper .control-area .input-row .input-checkbox-outer input[type=checkbox] {
+  appearance: none;
+  border: 1px solid #333;
+  height: 1.5em;
+  width: 1.5em;
+  cursor: pointer;
+  border-radius: 3px;
+}
+.wrapper .control-area .input-row .input-checkbox-outer input:checked + span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -75%) rotate(45deg);
+  display: block;
+  width: 0.75em;
+  height: 1em;
+  border-right: 3px solid #333;
+  border-bottom: 3px solid #333;
+  pointer-events: none;
+}
+.wrapper .table-area {
+  width: 90%;
+  margin: 0 auto;
+}
+.wrapper .table-area .table {
+  width: 100%;
+  margin: 0 auto;
+  border-collapse: collapse;
+  border: 2px solid #333;
+}
+.wrapper .table-area .table thead {
+  background-color: #999;
+}
+.wrapper .table-area .table thead tr {
+  border: 2px solid #333;
+}
+.wrapper .table-area .table thead th {
+  padding: 0.25em 0.5em;
+}
+.wrapper .table-area .table tbody tr.disabled {
+  background-color: #ccc;
+}
+.wrapper .table-area .table tbody td {
+  font-weight: bold;
+  padding: 0.25em 0.5em;
+  border-bottom: 1px solid #999;
+}
+.wrapper .table-area .table tbody td span {
+  font-weight: normal;
+}
+.wrapper .table-area .table tbody td a {
+  color: #000;
+  font-weight: bold;
+}
