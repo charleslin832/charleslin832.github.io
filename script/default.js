@@ -23,7 +23,7 @@ const usePageStore = Pinia.defineStore('pageStore', {
 	actions: {
 		initData(payload){
 			console.log('init');
-			let url = "https://script.google.com/macros/s/AKfycbwl-pYjCy9GmxD4DbfzLqx3v4k80MvmXUBqoqfvOqrpuZINF-WKdS0zfxy_ElT2zouSQA/exec";
+			let url = "https://script.google.com/macros/s/AKfycbyyGoKDXoSaiv2gmT5mWF5_dXx7iLj1HYvcPOmgCQey28fX6AfvzR8KGlfzDx-yJQ9ZsA/exec";
 			let data = {
 				startRow: 2,
 				startColumn: 1,
@@ -34,7 +34,7 @@ const usePageStore = Pinia.defineStore('pageStore', {
 				headers: { "Content-Type": "application/x-www-form-urlencoded" }
 			})
 				.then((res) => {
-					console.log("res:", res.data);
+					console.log("res:", res);
 				})
 				.catch((error) => {
 					console.log("error:", error);
