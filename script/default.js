@@ -974,7 +974,21 @@ const usePageStore = Pinia.defineStore('pageStore', {
 					'2',
 					'2024/10/9',
 					'3',
-					'']
+					''],
+				['波拉西亞',
+					'波戰富翁',
+					'https://warsofprasia-event.beanfun.com/Event/E20240723/Index',
+					'1',
+					'2024/7/23',
+					'3',
+					''],
+				['波拉西亞',
+					'守護者結伴計畫',
+					'https://warsofprasia-event.beanfun.com/event/E20241031/index',
+					'1',
+					'2024/10/31',
+					'3',
+					''],
 			]
 		}
 	},
